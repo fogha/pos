@@ -1,4 +1,4 @@
-package category
+package item
 
 import (
 	"context"
@@ -12,7 +12,7 @@ import (
 )
 
 const (
-	collectionName = "categories"
+	collectionName = "items"
 )
 
 var (
@@ -25,19 +25,19 @@ func collection() *mongo.Collection {
 	return db.Collection(collectionName)
 }
 
-func FindAll() (rows []*models.Category, err error) {
+func FindAll() (rows []*models.Item, err error) {
 	// passing bson.D{{}} matches all documents in the collection
 	filter := bson.D{{}}
 	rows, err = filterRows(filter)
 	return
 }
 
-func Find(filter interface{}) (rows []*models.Category, err error) {
+func Find(filter interface{}) (rows []*models.Item, err error) {
 	rows, err = filterRows(filter)
 	return
 }
 
-func Create(item models.Category) (created *models.Category, err error) {
+func Create(item models.Item) (created *models.Item, err error) {
 	res, err := collection().InsertOne(ctx, item)
 	if err != nil {
 		return nil, err
@@ -47,7 +47,7 @@ func Create(item models.Category) (created *models.Category, err error) {
 	return
 }
 
-func FindById(id string) (item *models.Category, err error) {
+func FindById(id string) (item *models.Item, err error) {
 	filter := bson.D{primitive.E{Key: "_id", Value: id}}
 	rows, err := filterRows(filter)
 	if err != nil {
@@ -61,11 +61,11 @@ func FindById(id string) (item *models.Category, err error) {
 	return
 }
 
-func UpdateById(id string, item models.Category) error {
+func UpdateById(id string, item models.Item) error {
 	filter := bson.D{primitive.E{Key: "_id", Value: id}}
 	b, _ := bson.Marshal(&item)
 	update := bson.D{primitive.E{Key: "$set", Value: b}}
-	updated := &models.Category{}
+	updated := &models.Item{}
 	return collection().FindOneAndUpdate(ctx, filter, update).Decode(updated)
 }
 
@@ -84,8 +84,8 @@ func DeleteById(id string) error {
 	return nil
 }
 
-func filterRows(filter interface{}) ([]*models.Category, error) {
-	rows := []*models.Category{}
+func filterRows(filter interface{}) ([]*models.Item, error) {
+	rows := []*models.Item{}
 
 	cur, err := collection().Find(ctx, filter)
 	if err != nil {
@@ -93,7 +93,7 @@ func filterRows(filter interface{}) ([]*models.Category, error) {
 	}
 
 	for cur.Next(ctx) {
-		var u models.Category
+		var u models.Item
 		err := cur.Decode(&u)
 		if err != nil {
 			return rows, err
@@ -108,10 +108,6 @@ func filterRows(filter interface{}) ([]*models.Category, error) {
 
 	// once exhausted, close the cursor
 	_ = cur.Close(ctx)
-
-	if len(rows) == 0 {
-		return rows, nil
-	}
 
 	return rows, nil
 }
