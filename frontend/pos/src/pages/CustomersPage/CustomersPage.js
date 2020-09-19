@@ -34,7 +34,7 @@ export default function CustomersPage() {
       <div className="customersPage__Left">
         <div className="customersPage__table">
           <button
-            class="btn btn-primary"
+            class="btn btn-primary btn-unique"
             color=""
             type="submit"
             onClick={handleOpen}

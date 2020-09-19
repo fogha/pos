@@ -5,12 +5,11 @@ import CustomersPage from "../src/pages/CustomersPage/CustomersPage";
 import Navbar from "../src/components/Navbar";
 import "./App.css";
 import Login from "./pages/login/login";
-import Sales from "./pages/sales/sales";
-import Employees from "./pages/employees/employees";
+import Sales from "./pages/sales/Sales";
+import Employees from "./pages/employees/Employees";
 
 class App extends Component {
-
-  render(){
+  render() {
     return (
       <div className="app">
         <Router>
@@ -21,7 +20,7 @@ class App extends Component {
             <Route path="/items" component={Items} />
             <Route path="/customers" component={CustomersPage} />
             <Route path="/sales" component={Sales} />
-            <Route path="/employees" component={Employees}/>
+            <Route path="/employees" component={Employees} />
           </Switch>
         </Router>
       </div>
