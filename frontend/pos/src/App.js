@@ -5,8 +5,8 @@ import CustomersPage from "../src/pages/CustomersPage/CustomersPage";
 import Navbar from "../src/components/Navbar";
 import "./App.css";
 import Login from "./pages/login/login";
-import Sales from "./pages/sales/Sales";
-import Employees from "./pages/employees/Employees";
+import Sales from "./pages/sales/sales";
+import Employees from "./pages/employees/employees";
 
 class App extends Component {
   render() {

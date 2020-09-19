@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import SideTable from "./SideTable";
+import CustomerTransactionsTable from "./customerTransactionsTable";
 import PeopleAltIcon from "@material-ui/icons/PeopleAlt";
 import Modal from "react-modal";
 import CloseIcon from "@material-ui/icons/Close";
 import "./CustomersPage.css";
-import NewTable from "./NewTable";
+import CustomersTable from "./CustomersTable";
 
 const customStyles = {
   content: {
@@ -42,12 +42,12 @@ export default function CustomersPage() {
             <PeopleAltIcon />
             New Customer
           </button>
-          <NewTable />
+          <CustomersTable />
         </div>
       </div>
 
       <div className="customersPage__Right">
-        <SideTable />
+        <CustomerTransactionsTable />
       </div>
 
       <Modal

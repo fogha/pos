@@ -11,19 +11,28 @@ const { SearchBar } = Search;
 
 const columns = [
   {
-    dataField: "id",
-    text: "Product ID",
+    dataField: "number",
+    text: "#",
     sort: true,
   },
   {
     dataField: "name",
-    text: "Product Name",
+    text: "Name",
     sort: true,
   },
   {
-    dataField: "price",
-    text: "Product Price",
+    dataField: "last",
+    text: "Last Transaction",
     sort: true,
+  },
+  {
+    dataField: "debt",
+    text: "Debt",
+    sort: true,
+  },
+  {
+    dataField: "action",
+    text: "Actions",
   },
 ];
 
@@ -31,9 +40,10 @@ const products = [];
 
 for (let i = 0; i < 1000; i++) {
   products.push({
-    id: i,
-    name: `bill${i}`,
-    price: i,
+    number: i,
+    name: `Bill_${i}`,
+    last: Date.now(),
+    debt: `${i}000`,
   });
 }
 
@@ -44,7 +54,7 @@ const defaultSorted = [
   },
 ];
 
-export default class NewTable extends React.Component {
+export default class CustomersTable extends React.Component {
   state = { products };
 
   loadData = () => {

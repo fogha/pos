@@ -11,19 +11,23 @@ import ToolkitProvider, { Search } from "react-bootstrap-table2-toolkit";
 
 const columns = [
   {
-    dataField: "id",
-    text: "Product ID",
+    dataField: "number",
+    text: "#",
     sort: true,
   },
   {
-    dataField: "name",
-    text: "Product Name",
+    dataField: "date",
+    text: "Date",
     sort: true,
   },
   {
-    dataField: "price",
-    text: "Product Price",
+    dataField: "total",
+    text: "Total",
     sort: true,
+  },
+  {
+    dataField: "actions",
+    text: "Actions",
   },
 ];
 
@@ -31,9 +35,9 @@ const products = [];
 
 for (let i = 0; i < 1000; i++) {
   products.push({
-    id: i,
-    name: `bill${i}`,
-    price: i,
+    number: i,
+    date: Date.now(),
+    total: `${i}00`,
   });
 }
 
@@ -44,7 +48,7 @@ const defaultSorted = [
   },
 ];
 
-export default class SideTable extends React.Component {
+export default class CustomerTransactionsTable extends React.Component {
   state = { products };
 
   loadData = () => {
