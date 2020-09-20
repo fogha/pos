@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useEffect, useState } from "react";
 import DeleteIcon from "@material-ui/icons/Delete";
 import AddIcon from "@material-ui/icons/Add";
@@ -9,6 +10,18 @@ import Navbar from "../../components/Navbar";
 import ReactTable from "react-table-v6";
 import "react-table-v6/react-table.css";
 import "./categories.css";
+=======
+import React, { useEffect, useState } from 'react';
+import DeleteIcon from '@material-ui/icons/Delete';
+import AddIcon from '@material-ui/icons/Add';
+import EditIcon from '@material-ui/icons/Edit';
+import { ActionModal } from '../../components';
+import Swal from 'sweetalert2'
+import Navbar from '../../components/Navbar';
+import ReactTable from 'react-table-v6'
+import 'react-table-v6/react-table.css'
+import './categories.css'
+>>>>>>> 732e97fd8a74ed747d16ceee67faa1d16f29f30a
 
 const data = [
   { id: 1, name: "General", isRetired: false },
@@ -16,6 +29,7 @@ const data = [
 ];
 
 const Categories = () => {
+<<<<<<< HEAD
   const [isEditCategoryModalVisible, setEditCategoryModalVisible] = useState(
     false
   );
@@ -30,6 +44,31 @@ const Categories = () => {
     setCategories(data);
     setFilteredCategories(data);
   }, []);
+=======
+    const [isEditCategoryModalVisible, setEditCategoryModalVisible] = useState(false)
+    const [isNewCategoryModalVisible, setNewCategoryModalVisible] = useState(false)
+    const [selectedCategory, setSelectedCategory] = useState(null)
+    const [categories, setCategories] = useState([])
+    const [filteredCategories, setFilteredCategories] = useState([])
+
+    useEffect(() => {
+        setCategories(data)
+        setFilteredCategories(data)
+    }, [])
+
+
+    const handleSearchInput = e => {
+        if (!e) {
+            setFilteredCategories([...categories])
+            return
+        }
+        let searchString = e.target.value.toLowerCase()
+        let tmp = categories.filter(cat => {
+            return cat.name.toLowerCase().indexOf(searchString) >= 0
+        })
+        setFilteredCategories(tmp)
+    }
+>>>>>>> 732e97fd8a74ed747d16ceee67faa1d16f29f30a
 
   const handleSearchInput = (e) => {
     if (!e) {
