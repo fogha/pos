@@ -42,18 +42,6 @@ const Categories = () => {
     setFilteredCategories(tmp);
   };
 
-  const handleSearchInput = (e) => {
-    if (!e) {
-      setFilteredCategories([...categories]);
-      return;
-    }
-    let searchString = e.target.value.toLowerCase();
-    let tmp = categories.filter((cat) => {
-      return cat.name.toLowerCase().indexOf(searchString) >= 0;
-    });
-    setFilteredCategories(tmp);
-  };
-
   const editCategory = (cat) => {
     setSelectedCategory(cat);
     setEditCategoryModalVisible(true);

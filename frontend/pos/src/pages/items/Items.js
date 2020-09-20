@@ -10,8 +10,7 @@ import Navbar from "../../components/Navbar";
 import { ActionModal } from "../../components";
 import BackupIcon from "@material-ui/icons/Backup";
 import Swal from "sweetalert2";
-
-import "./Items.css";
+import "./items.css";
 
 const data = [];
 for (let i = 0; i < 100; i++) {
